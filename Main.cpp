@@ -46,6 +46,7 @@ int main() {
 
         cout << "Object read forward, calling Print" << endl;
         L.ReadForward();
+        L.Print();
 
         cout << "Object printed, calling ReadBackward" << endl;
         L.ReadBackward();
