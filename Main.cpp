@@ -4,27 +4,79 @@ using namespace std;
 
 #undef NULL
 
-const int NULL = 0;
+const int  NULL = 0;
 
+// The following is a typedef statement and it is used for repetition
+// Range-checking data validation for the element data tye.
 typedef int element;
 
-const element SENTINEL = -1;
+// TO DO: Change into a Char #
+//const element SENTINEL = 1;
+// Creating a constant that takes a single character "#" to be 
+// programmed as sentinel variable. 
+const char SENTINEL = '#';
 
+// Prototype for a basic repetition type-checking dat validation
+// Functions.
 element read_element();
 
+// Creating a class called listnode that will be the basic blueprint
+// Of the public listings: Data type element of variable data.
+// Also, the listnode pointing to the next address of another listnode.
 class listnode {
         public:
                 element data;
                 listnode * next;
         };
 
+// Creating a class called LList that will be the main blueprint of
+// two different sections: private and public.
 class LList {
         private:
+                // listnode pointing to the head section of the data
                 listnode * head;
+
+                // listnode pointing to the tail section of the data
                 listnode * tail;
         public:
+                // The constructor of the LList that will have a PRE 
+                // condition of none. Also, a POST condition of valid
+                // and empty.
                 LList();
+
+                // The Destructor of the LList that will have a valid
+                // PRE condition. Also, a POST condition of valid and 
+                // empty and the listnodes will be deleted.
                 ~LList();
+
+                // This is the void Menu method that will display the 
+                // different commands and actions that the user has to 
+                // decided on.
+                void Menu();
+
+                // This is the void EnterVigesimal method that will be 
+                // called after pressing the command action "e" to enter
+                // elements of numbers in.
+                void EnterVigesimal();
+
+                // This is the void AddVigesimal method that will be called
+                // after pressing the command action "a" to add the current
+                // number will a new vigesimal number entered.
+                void AddVigesimal();
+
+                // This is the void MultiplyVigesimal method that will be
+                // called after pressing the command action "m" to multiply
+                // the current number and another number entered by the user.
+                void MultiplyVigesimal();
+
+                // This is the void HelpCommand method that will be called
+                // after pressing the command action "h" to display the other
+                // options of commands within the program. The user will be
+                // prompted to press h at the beginning of the program to 
+                // assist the user.
+                void HelpCommand();
+
+
                 void Print();
                 void InsertHead(element thing);
                 void InsertTail(element thing);
@@ -37,52 +89,47 @@ class LList {
                 void Reverse();
         };
 
+// Inside my main man, main.
 int main() {
 
+        // 
         LList L;
 
-        cout << "Object created and constructed, calling Print" << endl;
-        L.Print();
+        // Display the version of the vigesimal calculator and end the line.
+        cout << "Vigesimal Calculator, Version 1.0" << endl;
 
-        cout << "Object read forward, calling Print" << endl;
-        L.ReadForward();
-        L.Print();
+        // Display the year with the programmers name and end the line.
+        cout << "(c) 2017, Brandon Hartman" << endl;
 
-        cout << "Object printed, calling ReadBackward" << endl;
-        L.ReadBackward();
+        // Method call the function Menu from the LList class.
+        L.Menu();
+}
 
-        cout << "Object read backward, calling Print" << endl;
-        L.Print();
 
-        cout << "Object printed, calling Clean" << endl;
-        L.Clean();
-
-        cout << "Object cleaned, calling Print" << endl;
-        L.Print();
-        cout << "Object printed" << endl;
-        }
-
-//--------------------------READ_ELEMENT-------------------------
 element read_element() {
 
-        element userval;
+//      int  userval;
+        // Create a variable 
+        char userval;
 
-        cin >> boolalpha >>  userval;
+//      cin >> boolalpha >>  userval;
+        cin >> userval;
 
         while (! cin.good()) {
 
                 cin.clear();
                 cin.ignore(80, '\n');
 
-                cout << "Invalid data type, should be an element";
+                cout << "Invalid data type, should be an element" << endl;
                 cout << "Try again: ";
 
-                cin >> boolalpha >> userval;
+//              cin >> boolalpha >> userval;
+                cin >> userval;
         }
 
         return userval;
 }
-// -----------------------CONSTRUCTOR----------------------------
+
 LList::LList() {
         // PRE: none
         // POST: The N. O. LList is valid and empty
@@ -90,7 +137,7 @@ LList::LList() {
         head = NULL;
         }
 
-//-------------------------DESTRUCTOR-----------------------------
+
 LList::~LList() {
         // PRE: The N. O. LList is valid
         // POST: The N. O. LList is valid and empty, and its listnodes
@@ -99,11 +146,94 @@ LList::~LList() {
         Clean();
         }
 
+void LList::Menu() {
+
+//      int  userInput;
+        char userCharValue;
+        int userInput;
+
+        userInput = 0;
+        
+        cout << "Current vigesimal number is: ";
+//      Print();
+        cout << "Command (h for help): ";
+
+        userCharValue = read_element();
+        userInput = userCharValue;
+
+        if ((userInput == 101) || (userInput == 69))
+                EnterVigesimal();
+
+        else if ((userInput == 97) || (userInput == 65))
+                AddVigesimal();
+
+        else if ((userInput == 109) || (userInput == 77))
+                MultiplyVigesimal();
+
+        else if ((userInput == 104) || (userInput == 72))
+                HelpCommand();
+
+        else if ((userInput == 113) || (userInput == 81))
+                // Quit the program
+                cout << "Finishing Vigesimal Calculator, version 1.0";
+        else
+                cout << "Invalid input. Please try again." << endl;
+                Menu();
+        }
+
+void LList::EnterVigesimal() {
+
+        }
+
+void LList::AddVigesimal() {
+
+        cout << "Adding a new vigesimal number to the current vig. number."
+                << endl;
+
+        cout << "Adding completed." << endl;
+        }
+
+void LList::MultiplyVigesimal() {
+
+        cout << "Multiplying a new vigesimal number by the current vig."
+                << " number." << endl;
+
+        cout << "Multiplying completed." << endl;
+        }
+
+void LList::HelpCommand() {
+
+        // Display a prompt for the Valid Commands and end the line
+        cout << "Valid commands are:" << endl;
+
+        // Display a prompt for "e" to be assigned as enter and that
+         // the user can enter the current number and end the line.
+        cout << "   e   enter     enter the current vigesimal number"
+                << " from the keyboard" << endl;
+
+        // Display a prompt for "a" to be assigned as "Add" and that 
+        // the user can add a new number to the current vig. number
+        // and end the line.
+        cout << "   a   add       add a new vigesimal number to the"
+                << " current vig. number" << endl;
+
+        // Display a prompt for "m" to be assigned as "Multiply" and
+        // that the user can multiply a new number to 
+        cout << "   m   multiply  multiply a new vigesimal number by"
+                << " the current vig. number" << endl;
+
+        cout << "   h   help      show this help menu" << endl;
+
+        cout << "   q   quit      quit the program" << endl;
+
+        Menu();
+        }
 
 void LList::Print() {
         // PRE: The N. O. LList is valid
         // POST: The N. O. LList is unchanged, and its elements
         //       have been displayed
+
         listnode * temp;
 
         temp = head;
@@ -130,7 +260,6 @@ void LList::InsertHead(element thing) {
                 ;
         head = temp;
         }
-
 void LList::InsertTail(element thing) {
         // PRE: The N. O. LList is valid
         // POST: The N. O. LList is unchanged, except that a new
@@ -154,6 +283,7 @@ element LList::DeleteHead() {
         // POST: The N. O. LList is unchanged, except that the listnode
         //       at the head end of the list has been deleted, and its
         //       data element has been returned
+
         listnode * temp;
         element thing;
 
@@ -189,7 +319,7 @@ void LList::ReadBackward() {
         element  userval;
 
         Clean();
-        cout << "Enter elements, " << SENTINEL << " to stop: ";
+        cout << "Enter element, " << SENTINEL << " to stop: ";
         userval = read_element();
         while (userval != SENTINEL) {
                 InsertHead(userval);
@@ -226,7 +356,7 @@ void LList::Duplicate(LList & Source) {
         //       have been deleted, and it now consists of listnodes
         //       containing the same elements and in the same order
         //       as on the Source LList
-
+        
         listnode * temp;
 
         Clean();
@@ -252,4 +382,3 @@ void LList::Reverse() {
                 }
         Steal(Helper);
         }
-                       
