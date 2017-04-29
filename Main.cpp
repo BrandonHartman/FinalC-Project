@@ -1,20 +1,3 @@
-Last login: Fri Apr 28 20:53:40 on console
-Brandons-MacBook-Pro-3:~ Brandon$ ssh -l bhartman0009 district.bluegrass.kctcs.edu
-         **************** PLEASE NOTE: ****************
-
-You must now use your KCTCS PeopleSoft (or Active Directory) username and
-password to log in.  Your username should be all lowercase letters.
-
-Password: 
-Network Operations has adopted a new policy concerning the security patching of servers.  We will now be patching most servers every week on Sunday from 7:00AM to 9:00AM.  During this time, users may expect a brief outage as some servers will need to reboot.  There will be a 15 minute warning given to users logged into the District/Locker server via SSH if a reboot on that server should be necessary.
-
-Last login: Thu Apr 27 20:45:22 2017 from 45.18.207.21
-bhartman0009@district:~$ vim finalProgramTwo.cc
-
-
-
-
-
 
 #include <iostream>
 
