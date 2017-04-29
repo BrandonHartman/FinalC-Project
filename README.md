@@ -209,55 +209,108 @@ External Documentation is not required for this assignment and should not be sub
 On the following pages is a sample of what your program execution should look like when completed.
 
 Good luck!
+
 Vigesimal Calculator, Version 1.0
+
 (c) 2017, (your name)
+
 Current vigesimal number is: 0
+
 Command (h for help): h
+
 Valid commands are:
- e enter enter the current vigesimal number from the keyboard
- a add add a new vigesimal number to the current vig. number
- m multiply multiply a new vigesimal number by the current vig. number
- h help show this help menu
- q quit quit the program
+
+e enter enter the current vigesimal number from the keyboard
+
+a add add a new vigesimal number to the current vig. number
+
+m multiply multiply a new vigesimal number by the current vig. number
+
+h help show this help menu
+
+q quit quit the program
+
 Current vigesimal number is: 0
+
 Command (h for help): e
+
 Enter a vigesimal number, followed by #: ge3h9#
+
 Entering completed.
+
 Current vigesimal number is: GE,3H9
+
 Command (h for help): a
+
 Adding a new vigesimal number to the current vig. number.
+
 Enter a vigesimal number, followed by #: h5j3#
+
 New vigesimal number is: H,5J3
+
 Adding completed.
+
 Current vigesimal number is: HB,9GC
+
 Command (h for help): m
+
 Multiplying a new vigesimal number by the current vig. number.
+
 Enter a vigesimal number, followed by #: 524EH60600GC7AJH9#
+
 New vigesimal number is: 52,4EH,606,00G,C7A,JH9
+
 Multiplying completed.
+
 Current vigesimal number is: 4,9GF,9H9,1ED,5BD,7H4,3A5,ID8
+
 Command (h for help): m
+
 Multiplying a new vigesimal number by the current vig. number.
+
 Enter a vigesimal number, followed by #: C5A4EG991D03068F
+
 500B3084A7B9
+
 2228E09
+
 G55I9
- ?
+
+?
+
 FDID
+
 BH8BB3
- AE1EI7
+
+AE1EI7
+
 r68H
+
 C2JA
+
 E
+
 #
+
 Warning: invalid vigesimal digits seen: '?', 'r'; ignoring these
+
 New vigesimal number is: C,5A4,EG9,91D,030,68F,500,B30,84A,7B9,
- 222,8E0,9G5,5I9,FDI,DBH,8BB,3AE,1EI,
+
+222,8E0,9G5,5I9,FDI,DBH,8BB,3AE,1EI,
+
 768,HC2,JAE
+
 Multiplying completed.
+
 Current vigesimal number is: 2F,2G9,9CB,EI7,722,359,H6C,DH6,64E,F1B,
- 8HD,41E,HDH,989,2JA,JCG,J03,2G3,I62,
+
+8HD,41E,HDH,989,2JA,JCG,J03,2G3,I62,
+
 IB9,I5I,DG9,I93,C72,A3H,5CF,IDG,J10,
+
 77C
+
 Command (h for help): q
+
 Finishing Vigesimal Calculator, version 1.0
+
