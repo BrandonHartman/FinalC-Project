@@ -1,4 +1,3 @@
-
 #include <iostream>
 
 using namespace std;
@@ -14,6 +13,7 @@ const int  NULL = 0;
 // Range-checking data validation for the element data tye.
 typedef int element;
 
+//const int result = std::atexit(atexit_handler);
 // TO DO: Change into a Char #
 //const element SENTINEL = 1;
 // Creating a constant that takes a single character "#" to be 
@@ -50,9 +50,10 @@ class LList {
                 // The constructor of the LList that will have a PRE 
                 // condition of none. Also, a POST condition of valid
                 // and empty.
-                LList();
+        LList();
 
-                // The Destructor of the LList that will have a valid // PRE condition. Also, a POST condition of valid and 
+                // The Destructor of the LList that will have a valid
+                // PRE condition. Also, a POST condition of valid and 
                 // empty and the listnodes will be deleted.
                 ~LList();
 
@@ -86,7 +87,7 @@ class LList {
                 // This is the void Quit program that will be called
                 // after pressing the command "q" to quit the program in 
                 // all.
-                void QuitProgram();
+                int QuitProgram();
 
                 // PRE: The N. O. LList is valid  POST: The N. O. LList
                 //  is unchanged, and its elements have been displayed
@@ -102,6 +103,7 @@ class LList {
                 // POST: The N. O. LList is unchanged, except that a new
                 // listnode containing element thing has been inserted
                 // at the tail end of the lsit.
+                
                 void InsertTail(element thing);
 
                 // PRE: The N. O. LList is valid and not empty
@@ -147,6 +149,7 @@ class LList {
                 // in reverse order.
                 void Reverse();
         };
+
 // Inside my main man, main.
 int main() {
 
@@ -243,11 +246,13 @@ LList::LList() {
         // POST: The N. O. LList is valid and empty
 
         // Assign NULL to the head
+        
         head = NULL;
         }
 
 // LList calls LList to make a destructor within the program.
 LList::~LList() {
+
         // PRE: The N. O. LList is valid
         // POST: The N. O. LList is valid and empty, and its listnodes
         //       have been deleted.
@@ -261,17 +266,19 @@ void LList::Menu() {
 
         // Create a variable defined as the currentVigNumber and
         // assign it to zero and the data type is char.
-        char currentVigNumber = 0;
+        int  currentVigNumber = 0;
 
         // Display the Current vigesimal number and show what the
         // current number is.
-        cout << "Current vigesimal number is: "<< currentVigNumber ;
-
+        cout << endl;
+//      cout << "Current vigesimal number is: "<< currentVigNumber ;
+//      cout << endl;   
         // Display that the Command (h for help)
         cout << "Command (h for help): ";
-
         // Declare and define the char userval.
         char userval;
+
+//      const int result = std::atexit(atexit_handler);
 
         // Run userval through the read_char which does data validation
         // for the input.
@@ -291,7 +298,7 @@ void LList::Menu() {
         //      else
         //              Display input was invalid and to try again.
         //              Head into the Menu method
-
+        
         if ((userval == 'e') || (userval == 'E'))
                 EnterVigesimal();
 //              Menu();
@@ -310,53 +317,152 @@ void LList::Menu() {
                 Menu();
         }
 // WORKING PROGRESS ON THE QUIT PROGRAM 
-void LList::QuitProgram() {
+int LList::QuitProgram() {
 
         // Display Finishing Vig. Calculator, Version 1
-        cout << "Finishing Vigesimal Calculator, Version 1.0";
-        return;
+        cout << "Finishing Vigesimal Calculator, Version 1.0 " << endl;
+        return 0;
         }
 // WORKING PROGRESS ON THE ENTERPROGRAM
 void LList::EnterVigesimal() {
 
-        char currentVigNum = 0;
-
+//      int currentVigNum = 0;
+        char newVigNumber;
         // Display a prompt allowing the user to type in characters until
         // the user puts in the sentinel and end the line.
 //      cout << "Enter a vigesimal number, followed by " << SENTINEL
 //              << ": " << endl;
-
+//      newVigNumber = currentVigNum;
         // Call the ReadBackward method to use it's functions
         ReadBackward();
-
+//      newVigNumber = currentVigNum;   
         // Display that the entering is completed. 
-        cout << "Entering completed.";
+        cout << "Entering completed. " << endl;
+        cout << "Current Vigesimal number is: " << newVigNumber;
         }
 
 
 void LList::AddVigesimal() {
 
+        char userval;
 
+        int remainder;
+
+        element number;
+
+        LList helper;
+
+        LList combination;
+
+        listnode * temp;
+
+        listnode * temp2;
+
+        temp = head;
+
+        temp2 = helper.head;
+
+        combination.head = NULL;
+
+        remainder = 0;
 
         // Display that the program is adding a new vig.number to the 
         // current vig. number and end the line.
         cout << "Adding a new vigesimal number to the current vig. number."
                 << endl;
 
+        helper.ReadBackward();
+
+        while ((temp != NULL) && (temp2 != NULL)){
+                number = (temp -> data) % (temp2 -> data);
+                if (remainder < 20){
+                        combination.InsertTail(number);
+                        temp = temp -> next;
+                        temp2 = temp2 -> next;
+                        }
+                else {
+                        number =(temp -> data) + (temp2 ->data) + remainder;
+                        combination.InsertTail(number);
+                        temp = temp -> next;
+                        temp2 = temp2 -> next;
+                        }
+                }
+        while (temp != NULL){
+                combination.InsertTail(temp -> data);
+                temp = temp -> next;
+                }
+
+        while (temp2 != NULL){
+                combination.InsertTail(temp2 -> data);
+                temp2 = temp2 -> next;
+                }
+        Duplicate(combination);
+
         // Display that the adding is completed and end the line.
         cout << "Adding completed." << endl;
-          }
+        cout << " Current vigesimal number is: " << number << endl;
+        }
 
 void LList::MultiplyVigesimal() {
+
+        char userval;
+
+        int remainder;
+
+        element number;
+
+        LList helper;
+
+        LList combination;
+
+        listnode * temp;
+
+        listnode * temp2;
+
+        temp = head;
+
+        temp2 = helper.head;
+
+        combination.head = NULL;
+
+        remainder = 0;
+
 
         LList Helper;
         // Display a prompt that tells the user to multiplying a new vig.
         // number by the current vig. number and end the line.
         cout << "Multiplying a new vigesimal number by the current vig."
                 << " number." << endl;
-        Helper.ReadBackward();
+
+        helper.ReadBackward();
+
+        while ((temp != NULL) && (temp2 != NULL)){
+                number = (temp -> data) % (temp2 -> data);
+                if (remainder < 20){
+                        combination.InsertTail(number);
+                        temp = temp -> next;
+                        temp2 = temp2 -> next;
+                        }
+                else {
+                        number =(temp -> data) + (temp2 ->data) * remainder;
+                        combination.InsertTail(number);
+                        temp = temp -> next;
+                        temp2 = temp2 -> next;
+                        }
+                }
+        while (temp != NULL){
+                combination.InsertTail(temp -> data);
+                temp = temp -> next;
+                }
+while (temp2 != NULL){
+                combination.InsertTail(temp2 -> data);
+                temp2 = temp2 -> next;
+                }
+        Duplicate(combination);
+
         // Display that the Multiplying is completed and end the line.
         cout << "Multiplying completed." << endl;
+        cout << "Current vigesimal number is: " << number;
         }
 
 void LList::HelpCommand() {
@@ -402,7 +508,7 @@ void LList::Print() {
         listnode * temp;
 
         // temp is equaled to head
-        temp = head;
+temp = head;
 
         // While temp is not NULL
         //      Print temp pointing point to data and end the line
@@ -454,7 +560,7 @@ void LList::InsertTail(element thing) {
         //       at the tail end of the lsit.
 
         // temp is pointing to listnode 
-        listnode * temp;
+listnode * temp;
 
         // A new listnode is created and declared and defined as temp
         temp = new listnode;
@@ -502,9 +608,10 @@ element LList::DeleteHead() {
 
         // DESTROY temp by deleting it
         delete temp;
+
         // Return thing
         return thing;
-        }
+}
 
 //==========================STILL ELEMENTS NOT CHARS
 void LList::ReadForward() {
@@ -555,7 +662,6 @@ void LList::ReadBackward() {
         // while userval is not the sentinel
         //      call the InsertHead method with the parameters of userval
         //      user vall goes through data validation
-        
         while (userval != SENTINEL) {
                 InsertHead(userval);
                 userval = read_char();
@@ -609,8 +715,7 @@ void LList::Duplicate(LList & Source) {
 
         // Method Clean is called to wipe all the data away
         Clean();
-
-                // Source.head is assigned as temp
+// Source.head is assigned as temp
         temp = Source.head;
 
         // while temp is not NULL
@@ -651,3 +756,5 @@ void LList::Reverse() {
                 }
         Steal(Helper);
         }
+                                        
+
